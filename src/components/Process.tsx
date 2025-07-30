@@ -4,17 +4,17 @@ const steps = [
   {
     title: 'Discovery & Strategy',
     description: 'We start by understanding your vision, goals, and challenges to craft a bespoke digital strategy.',
-    image: '/assets/process_image_1.png',
+    image: 'https://placehold.co/600x400/00FFFF/000000/png?text=Strategy',
   },
   {
     title: 'Design & Development',
     description: 'Our team designs and develops a stunning, high-performance website that embodies your brand.',
-    image: '/assets/process_image_2.png',
+    image: 'https://placehold.co/600x400/FF00FF/000000/png?text=Design',
   },
   {
     title: 'Launch & Optimization',
     description: 'We deploy your new site and continuously monitor and optimize for peak performance and engagement.',
-    image: '/assets/dashboard.png',
+    image: 'https://placehold.co/600x400/FFFFFF/000000/png?text=Launch',
   },
 ];
 

@@ -8,21 +8,21 @@ export const team: TeamMember[] = [
   {
     name: 'Alex Johnson',
     role: 'Lead Developer',
-    avatar: 'https://placehold.co/150x150/00FFFF/000000/png?text=AJ',
+    avatar: '/assets/avatar_1.png',
   },
   {
     name: 'Maria Garcia',
     role: 'Creative Director',
-    avatar: 'https://placehold.co/150x150/FF00FF/000000/png?text=MG',
+    avatar: '/assets/avatar_2.png',
   },
   {
     name: 'Sam Lee',
     role: 'Project Manager',
-    avatar: 'https://placehold.co/150x150/FFFFFF/000000/png?text=SL',
+    avatar: '/assets/avatar_1.png',
   },
-  {
+    {
     name: 'Emily White',
     role: 'UI/UX Specialist',
-    avatar: 'https://placehold.co/150x150/CCCCCC/000000/png?text=EW',
+    avatar: '/assets/avatar_2.png',
   },
 ];

@@ -8,21 +8,21 @@ export const team: TeamMember[] = [
   {
     name: 'Alex Johnson',
     role: 'Lead Developer',
-    avatar: '/assets/avatar_1.png',
+    avatar: '/assets/8.png',
   },
   {
     name: 'Maria Garcia',
     role: 'Creative Director',
-    avatar: '/assets/avatar_2.png',
+    avatar: '/assets/9.png',
   },
   {
     name: 'Sam Lee',
     role: 'Project Manager',
-    avatar: '/assets/avatar_1.png',
+    avatar: '/assets/10.png',
   },
-    {
+  {
     name: 'Emily White',
     role: 'UI/UX Specialist',
-    avatar: '/assets/avatar_2.png',
+    avatar: '/assets/11.png',
   },
 ];

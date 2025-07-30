@@ -4,17 +4,17 @@ const steps = [
   {
     title: 'Discovery & Strategy',
     description: 'We start by understanding your vision, goals, and challenges to craft a bespoke digital strategy.',
-    image: '/assets/process_image_1.png',
+    image: '/assets/15.png',
   },
   {
     title: 'Design & Development',
     description: 'Our team designs and develops a stunning, high-performance website that embodies your brand.',
-    image: '/assets/process_image_2.png',
+    image: '/assets/16.png',
   },
   {
     title: 'Launch & Optimization',
     description: 'We deploy your new site and continuously monitor and optimize for peak performance and engagement.',
-    image: '/assets/dashboard.png',
+    image: '/assets/17.png',
   },
 ];
 

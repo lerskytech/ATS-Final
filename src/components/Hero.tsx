@@ -24,7 +24,7 @@ const Hero = () => {
 
   return (
     <section 
-      className="relative h-screen flex items-center justify-center text-center overflow-hidden"
+      className="relative h-screen flex items-center justify-center text-center"
       style={{ backgroundImage: `url('/assets/hero_background.png')`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed' }}
     >
       <div className="absolute inset-0 bg-black bg-opacity-50" />

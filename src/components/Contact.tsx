@@ -19,19 +19,7 @@ const Contact = () => {
       transition: { duration: 0.5, ease: 'easeOut' },
     },
   };
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-
-    // Simulate form submission for demonstration
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setIsSubmitted(true);
-    }, 2000);
-  };
 
   return (
     <section id="contact" className="relative py-24">
@@ -57,23 +45,14 @@ const Contact = () => {
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.8 }}
         >
-          {isSubmitted ? (
-            <div className="text-center">
-              <h3 className="text-3xl text-accent mb-4">Thank You</h3>
-              <p className="text-text-secondary">Your inquiry has been received. Our team will be in touch with you shortly.</p>
-            </div>
-          ) : (
             <motion.form 
-              name="contact"
+              action="https://formspree.io/f/xovllplj"
               method="POST"
-              data-netlify="true"
-              onSubmit={handleSubmit}
               className="space-y-6"
               variants={containerVariants}
               initial="hidden"
               animate="visible"
             >
-              <input type="hidden" name="form-name" value="contact" />
               <motion.div variants={itemVariants}>
                 <label htmlFor="name" className="block text-sm font-sans text-text-primary mb-2">Full Name</label>
                 <input type="text" name="name" id="name" className="w-full px-4 py-3 bg-background border border-gray-300 rounded-md text-text-primary placeholder-text-secondary/70 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent transition-all duration-300" required />
@@ -89,14 +68,12 @@ const Contact = () => {
               <motion.div variants={itemVariants} className="text-center">
                 <button 
                   type="submit"
-                  disabled={isSubmitting}
-                  className="bg-accent text-white font-bold py-3 px-8 rounded-md uppercase tracking-wider transition-all duration-300 hover:bg-accent-hover hover:shadow-lg w-full md:w-auto disabled:opacity-70 disabled:cursor-wait"
+                  className="bg-accent text-white font-bold py-3 px-8 rounded-md uppercase tracking-wider transition-all duration-300 hover:bg-accent-hover hover:shadow-lg w-full md:w-auto"
                 >
-                  {isSubmitting ? 'Scheduling...' : 'Schedule My Free Session'}
+                  Schedule My Free Session
                 </button>
               </motion.div>
             </motion.form>
-          )}
         </motion.div>
       </div>
     </section>

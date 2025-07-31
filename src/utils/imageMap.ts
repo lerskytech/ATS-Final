@@ -1,4 +1,14 @@
-export const imageMap = {
+export interface ImageMetadata {
+  ratio: string;
+  useCase: string;
+  dimensions?: string;
+}
+
+export const imageMap: { [key: string]: ImageMetadata } = {
+  '/assets/ATSLOGO.JPG': {
+    ratio: '1/1', 
+    useCase: 'Main Site Logo',
+  },
   '/assets/banners/hero.png': { ratio: '3:2', useCase: 'Hero banner', dimensions: '1500x1000' },
   '/assets/portraits/about.png': { ratio: '2:3', useCase: 'About team visual', dimensions: '600x900' },
   '/assets/portraits/service1.png': { ratio: '2:3', useCase: 'Services card 1', dimensions: '600x900' },

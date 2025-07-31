@@ -1,32 +1,26 @@
 import { motion } from 'framer-motion';
-import { imageMap } from '../utils/imageMap';
-import RatioBox from './RatioBox';
+import CrmImage from '../assets/Custom CRM & Automation.png';
+import BrandingImage from '../assets/Branding & Digital Presence.png';
+import MarketingImage from '../assets/Marketing & Outreach.png';
 
 const services = [
   {
-    title: 'Website Design & Development',
-    description: 'Creating stunning, high-performance websites that are tailored to your brand and designed to convert. We focus on user experience and cutting-edge technology.',
-    icon: '/assets/icons/website.png',
+    title: 'Custom CRM & Automation',
+    description: 'Build powerful systems to automate follow-ups, lead nurturing, and client retention.',
+    image: CrmImage,
+    alt: 'A clean, intuitive CRM dashboard on a laptop screen.',
   },
   {
-    title: 'Brand Identity & Strategy',
-    description: 'We help you build a strong, memorable brand that resonates with your target audience. From logo design to brand guidelines, we\'ve got you covered.',
-    icon: '/assets/icons/branding.png',
+    title: 'Branding & Digital Presence',
+    description: 'Create a unified brand identity, compelling content, and a conversion-focused website.',
+    image: BrandingImage,
+    alt: 'A mood board showcasing a cohesive brand identity for a modern business.',
   },
   {
-    title: 'Social Media Management',
-    description: 'Engage your community and grow your online presence with our data-driven social media strategies. We create content that captures attention and drives results.',
-    icon: '/assets/icons/social.png',
-  },
-  {
-    title: 'Advanced CRM Integration',
-    description: 'Streamline your sales and customer service processes with a fully integrated CRM system. We specialize in platforms like Salesforce and HubSpot.',
-    icon: '/assets/icons/crm.png',
-  },
-  {
-    title: 'Voice Search & SEO',
-    description: 'Optimize your content for the future of search. We\'ll help you rank higher and reach more customers through voice-activated queries and comprehensive SEO.',
-    icon: '/assets/icons/seo.png',
+    title: 'Marketing & Outreach',
+    description: 'Automate social media, set appointments, and rank on voice search to connect with more customers.',
+    image: MarketingImage,
+    alt: 'Abstract visualization of automated marketing pathways.',
   },
 ];
 
@@ -45,10 +39,10 @@ const itemVariants = {
 
 const Services = () => {
   return (
-    <section id="services" className="py-20 bg-gray-900/70 backdrop-blur-sm">
+    <section id="services" className="py-20 px-4 bg-background">
       <div className="container mx-auto px-4 text-center">
-        <h2 className="text-4xl font-bold mb-4 text-white">Our Services</h2>
-        <p className="text-lg text-gray-400 mb-12 max-w-3xl mx-auto">We deliver comprehensive solutions that blend creativity with technology to help you achieve your business goals.</p>
+        <h2 className="text-4xl font-bold mb-4 font-sans text-accent">Our Solutions</h2>
+        <p className="text-lg text-text-secondary mb-12 max-w-3xl mx-auto">We blend technology and creativity to deliver results that help your business grow.</p>
         <motion.div 
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
           variants={containerVariants}
@@ -56,32 +50,20 @@ const Services = () => {
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
         >
-          {services.map((service) => {
-            const imageData = imageMap[service.icon as keyof typeof imageMap];
-            if (!imageData) {
-              console.error(`Image data not found for icon: ${service.icon}`);
-              return null;
-            }
+          {services.map((service) => (
+            <motion.div
+              key={service.title}
+              className="bg-surface p-8 rounded-lg border border-gray-200 text-left transform transition-all duration-500 hover:scale-105 hover:-translate-y-2 hover:shadow-xl hover:border-accent"
+              variants={itemVariants}
+            >
+              <div className="w-full h-48 mb-6 rounded-lg overflow-hidden">
+                <img src={service.image} alt={service.alt} className="w-full h-full object-cover" />
+              </div>
 
-            return (
-              <motion.div
-                key={service.title}
-                className="bg-gray-900/50 backdrop-blur-md p-8 rounded-lg border border-cyan-400/30 text-left transform transition-all duration-500 hover:scale-105 hover:-translate-y-2 hover:shadow-lg hover:shadow-cyan-500/30 hover:border-cyan-400"
-                variants={itemVariants}
-              >
-                <div className="w-full mb-6">
-                  <RatioBox 
-                    src={service.icon} 
-                    alt={imageData.useCase} 
-                    ratio={imageData.ratio} 
-                    className="rounded-lg border-2 border-cyan-500/50"
-                  />
-                </div>
-                <h3 className="text-2xl font-bold mb-4 text-cyan-400">{service.title}</h3>
-                <p className="text-gray-300">{service.description}</p>
-              </motion.div>
-            );
-          })}
+              <h3 className="text-2xl font-bold mb-4 text-text-primary">{service.title}</h3>
+              <p className="text-text-secondary">{service.description}</p>
+            </motion.div>
+          ))}
         </motion.div>
       </div>
     </section>

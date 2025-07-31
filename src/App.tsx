@@ -12,7 +12,7 @@ import ATS from './components/ATS';
 
 const App = () => {
   return (
-    <div className="bg-black text-white">
+    <div className="bg-background text-text-primary font-sans">
       <Navbar />
       <div id="hero"><Hero /></div>
       <div id="about"><About /></div>

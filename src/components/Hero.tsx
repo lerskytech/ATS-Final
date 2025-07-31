@@ -1,116 +1,82 @@
-import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import Particles, { initParticlesEngine } from '@tsparticles/react';
-import { type Container, type Engine, type ISourceOptions } from '@tsparticles/engine';
-import { loadSlim } from '@tsparticles/slim';
+import HeroImage from '../assets/Hero Section.png';
+import { Link } from 'react-scroll';
 
 const Hero = () => {
-  const [init, setInit] = useState(false);
+  const headline = "Scale Your Business, Automatically.";
 
-  useEffect(() => {
-    initParticlesEngine(async (engine: Engine) => {
-      await loadSlim(engine);
-    }).then(() => {
-      setInit(true);
-    });
-  }, []);
+  const sentenceVariants = {
+    hidden: { opacity: 1 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  };
 
-  const particlesOptions: ISourceOptions = {
-    background: {
-      color: {
-        value: '#000000',
+  const wordVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        type: 'spring',
+        damping: 12,
+        stiffness: 100,
       },
     },
-    fpsLimit: 120,
-    interactivity: {
-      events: {
-        onHover: {
-          enable: true,
-          mode: 'repulse',
-        },
-      },
-      modes: {
-        repulse: {
-          distance: 100,
-          duration: 0.4,
-        },
-      },
-    },
-    particles: {
-      color: {
-        value: '#00ffff',
-      },
-      links: {
-        color: '#00ffff',
-        distance: 150,
-        enable: true,
-        opacity: 0.2,
-        width: 1,
-      },
-      collisions: {
-        enable: true,
-      },
-      move: {
-        direction: 'none',
-        enable: true,
-        outModes: {
-          default: 'bounce',
-        },
-        random: false,
-        speed: 1,
-        straight: false,
-      },
-      number: {
-        density: {
-          enable: true,
-        },
-        value: 80,
-      },
-      opacity: {
-        value: 0.2,
-      },
-      shape: {
-        type: 'circle',
-      },
-      size: {
-        value: { min: 1, max: 5 },
-      },
-    },
-    detectRetina: true,
   };
 
   return (
-    <section id="hero" className="relative h-screen flex items-center justify-center text-center overflow-hidden">
-      {init && <Particles id="tsparticles" options={particlesOptions}  />}
-      <div className="relative z-10 p-4">
-        <motion.div
-          initial={{ opacity: 0, y: -50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: 'easeOut' }}
+    <section id="hero" className="relative h-screen flex items-center justify-center bg-background">
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: `url(${HeroImage})` }}
+        role="img"
+        aria-label="A modern digital agency dashboard UI showing client growth metrics."
+      >
+        <div className="absolute inset-0 bg-black/30"></div>
+      </div>
+
+      <div className="relative z-10 container mx-auto px-4 text-center">
+        <motion.h1 
+          className="font-sans font-bold text-6xl md:text-8xl text-text-primary mb-4"
+          variants={sentenceVariants}
+          initial="hidden"
+          animate="visible"
         >
-          <h1 
-            className="text-5xl md:text-7xl font-bold text-white uppercase glitch"
-            data-text="Digital Excellence"
-          >
-            Digital Excellence
-          </h1>
-          <motion.p 
-            className="text-lg md:text-2xl text-cyan-300 mt-4 max-w-3xl mx-auto"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 0.5 }}
-          >
-            We don't just build websites. We architect digital futures.
-          </motion.p>
+          {headline.split(" ").map((word, index) => (
+            <motion.span
+              key={index}
+              variants={wordVariants}
+              style={{ display: 'inline-block', marginRight: '15px' }}
+            >
+              {word}
+            </motion.span>
+          ))}
+        </motion.h1>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 1.5, ease: "easeInOut" }}
+        >
+          <p className="text-xl md:text-2xl text-text-secondary max-w-3xl mx-auto mb-10">
+            Custom CRM systems, branding, and digital strategy for service-based businesses.
+          </p>
         </motion.div>
         <motion.div
-          initial={{ opacity: 0, scale: 0.5 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5, delay: 1 }}
+          className="flex justify-center gap-4"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 1.8, ease: "easeInOut" }}
         >
-          <button className="mt-8 px-8 py-4 bg-cyan-500 text-black font-bold text-lg rounded-full transition-transform duration-300 hover:scale-110 pulse-glow">
-            Discover Your Future
-          </button>
+          <Link to="services" smooth={true} duration={800} className="bg-accent text-white font-bold py-3 px-8 rounded-sm uppercase tracking-wider transition-all duration-300 hover:bg-accent-hover hover:shadow-lg cursor-pointer">
+            Our Solutions
+          </Link>
+          <Link to="contact" smooth={true} duration={800} className="bg-transparent border-2 border-accent text-accent font-bold py-3 px-8 rounded-sm uppercase tracking-wider transition-all duration-300 hover:bg-accent hover:text-white cursor-pointer">
+            Get Started
+          </Link>
         </motion.div>
       </div>
     </section>

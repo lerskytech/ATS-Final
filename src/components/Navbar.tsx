@@ -32,9 +32,9 @@ const Navbar = () => {
         <div className="flex justify-between items-center h-20">
           <Link to="hero" smooth={true} duration={500} className="cursor-pointer w-12 h-12">
             <RatioBox 
-              src="/assets/ATSLOGO.JPG"
+              src="/assets/ATSLOGO.png"
               alt="Alpha Trust Solutions Logo"
-              ratio={imageMap['/assets/ATSLOGO.JPG'].ratio}
+              ratio={imageMap['/assets/ATSLOGO.png'].ratio}
             />
           </Link>
           <div className="hidden md:flex items-center space-x-8">

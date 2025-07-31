@@ -5,7 +5,7 @@ export interface ImageMetadata {
 }
 
 export const imageMap: { [key: string]: ImageMetadata } = {
-  '/assets/ATSLOGO.JPG': {
+  '/assets/ATSLOGO.png': {
     ratio: '1/1', 
     useCase: 'Main Site Logo',
   },

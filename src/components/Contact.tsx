@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import ContactImage from '../assets/12. Contact Section.png';
+import ContactImage from '../Assets/12. Contact Section.png';
 
 const Contact = () => {
   const containerVariants = {

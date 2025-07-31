@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
-import CrmImage from '../assets/2. Custom CRM & Automation.png';
-import BrandingImage from '../assets/3. Branding & Digital Presence.png';
-import MarketingImage from '../assets/4. Marketing & Outreach.png';
+import CrmImage from '../Assets/2. Custom CRM & Automation.png';
+import BrandingImage from '../Assets/3. Branding & Digital Presence.png';
+import MarketingImage from '../Assets/4. Marketing & Outreach.png';
 
 const services = [
   {

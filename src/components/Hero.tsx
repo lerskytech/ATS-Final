@@ -42,31 +42,33 @@ const Hero = () => {
         initial="hidden"
         animate="visible"
       >
-        <motion.h1 
-          className="font-sans font-bold text-6xl md:text-8xl text-white mb-4"
-          variants={itemVariants}
-        >
-          {headline}
-        </motion.h1>
-        
-        <motion.p 
-          className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto mb-10"
-          variants={itemVariants}
-        >
-          Bespoke CRM systems, iconic branding, and intelligent digital strategy for ambitious service-based businesses.
-        </motion.p>
-        
-        <motion.div
-          className="flex justify-center gap-4"
-          variants={itemVariants}
-        >
+        <div className="bg-black/40 backdrop-blur-md rounded-2xl p-8 md:p-12 border border-white/10 shadow-2xl max-w-4xl mx-auto">
+          <motion.h1 
+            className="font-sans font-bold text-5xl md:text-7xl text-white mb-4"
+            variants={itemVariants}
+          >
+            {headline}
+          </motion.h1>
+          
+          <motion.p 
+            className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto mb-10"
+            variants={itemVariants}
+          >
+            Bespoke CRM systems, iconic branding, and intelligent digital strategy for ambitious service-based businesses.
+          </motion.p>
+          
+          <motion.div
+            className="flex flex-col sm:flex-row justify-center gap-4"
+            variants={itemVariants}
+          >
           <Link to="services" smooth={true} duration={800} className="bg-accent text-white font-bold py-3 px-8 rounded-sm uppercase tracking-wider transition-all duration-300 hover:bg-accent-hover hover:shadow-lg cursor-pointer">
             Our Solutions
           </Link>
           <Link to="contact" smooth={true} duration={800} className="bg-transparent border-2 border-accent text-accent font-bold py-3 px-8 rounded-sm uppercase tracking-wider transition-all duration-300 hover:bg-accent hover:text-white cursor-pointer">
             Get Started
           </Link>
-        </motion.div>
+          </motion.div>
+        </div>
       </motion.div>
     </section>
   );

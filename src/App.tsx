@@ -14,14 +14,14 @@ const App = () => {
   return (
     <div className="bg-background text-text-primary font-sans">
       <Navbar />
-      <div id="hero"><Hero /></div>
-      <div id="about"><About /></div>
-      <div id="services"><Services /></div>
-      <div id="process"><Process /></div>
-      <div id="portfolio"><Portfolio /></div>
-      <div id="testimonials"><Testimonials /></div>
-      <div id="team"><Team /></div>
-      <div id="contact"><Contact /></div>
+      <Hero />
+      <About />
+      <Services />
+      <Process />
+      <Portfolio />
+      <Testimonials />
+      <Team />
+      <Contact />
 
       <Footer />
     </div>

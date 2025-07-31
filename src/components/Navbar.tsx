@@ -5,12 +5,11 @@ import { imageMap } from '../utils/imageMap';
 import RatioBox from './RatioBox';
 
 const navLinks = [
-  { to: 'about', label: 'About' },
+  { to: 'hero', label: 'Home' },
   { to: 'services', label: 'Services' },
   { to: 'process', label: 'Process' },
   { to: 'portfolio', label: 'Work' },
   { to: 'testimonials', label: 'Testimonials' },
-  { to: 'team', label: 'Team' },
   { to: 'contact', label: 'Contact' },
 ];
 

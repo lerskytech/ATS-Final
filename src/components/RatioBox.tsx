@@ -9,8 +9,10 @@ interface RatioBoxProps {
 }
 
 const RatioBox: React.FC<RatioBoxProps> = ({ src, alt, ratio, width = '100%', className = '' }) => {
-  const [numerator, denominator] = ratio.split(':').map(Number);
-  const aspectRatio = denominator && numerator ? `${numerator} / ${denominator}` : '1 / 1';
+  const [numerator, denominator] = ratio.includes('/') 
+    ? ratio.split('/').map(Number) 
+    : ratio.split(':').map(Number);
+  const aspectRatio = (denominator && numerator) ? `${numerator} / ${denominator}` : '1 / 1';
 
   return (
     <div

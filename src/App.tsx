@@ -1,5 +1,6 @@
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
+import About from './components/About';
 import Services from './components/Services';
 import Process from './components/Process';
 import Portfolio from './components/Portfolio';
@@ -13,6 +14,7 @@ const App = () => {
     <div className="bg-black text-white">
       <Navbar />
       <div id="hero"><Hero /></div>
+      <div id="about"><About /></div>
       <div id="services"><Services /></div>
       <div id="process"><Process /></div>
       <div id="portfolio"><Portfolio /></div>

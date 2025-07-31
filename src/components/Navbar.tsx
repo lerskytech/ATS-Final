@@ -3,6 +3,7 @@ import { Link } from 'react-scroll';
 import { FaBars, FaTimes } from 'react-icons/fa';
 
 const navLinks = [
+  { to: 'about', label: 'About' },
   { to: 'services', label: 'Services' },
   { to: 'process', label: 'Process' },
   { to: 'portfolio', label: 'Work' },

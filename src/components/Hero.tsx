@@ -1,7 +1,11 @@
 import { motion } from 'framer-motion';
+import RatioBox from './RatioBox';
+import { imageMap } from '../utils/imageMap';
 
 const Hero = () => {
   const tagline = 'Empowering Businesses with Digital Excellence';
+  const heroImageKey = '/assets/banners/hero.webp';
+  const heroImageData = imageMap[heroImageKey as keyof typeof imageMap];
 
   const sentence = {
     hidden: { opacity: 1 },
@@ -23,13 +27,18 @@ const Hero = () => {
   };
 
   return (
-    <section 
-      className="relative h-screen flex items-center justify-center text-center"
-      style={{ backgroundImage: `url('/assets/14.png')`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed' }}
-    >
+    <section className="relative h-screen flex items-center justify-center text-center">
+      <div className="absolute inset-0 w-full h-full">
+        <RatioBox
+          src={heroImageKey}
+          alt={heroImageData.useCase}
+          ratio={heroImageData.ratio}
+          className="w-full h-full"
+        />
+      </div>
       <div className="absolute inset-0 bg-black bg-opacity-50" />
       <div className="relative z-10 p-8 bg-black bg-opacity-30 backdrop-blur-lg rounded-xl border border-cyan-400/50 shadow-lg shadow-cyan-500/20">
-        <motion.h1 
+        <motion.h1
           className="text-4xl md:text-6xl font-bold text-white mb-6 tracking-wider"
           variants={sentence}
           initial="hidden"

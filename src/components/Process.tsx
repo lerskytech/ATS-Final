@@ -1,8 +1,8 @@
 import { motion } from 'framer-motion';
-import DiscoveryImage from '../assets/Discovery & Strategy.png';
-import DevelopmentImage from '../assets/System & Brand Development.png';
-import LaunchImage from '../assets/Automation & Launch.png';
-import ScalingImage from '../assets/Optimization & Scaling.png';
+import DiscoveryImage from '../assets/5. Discovery & Strategy.png';
+import DevelopmentImage from '../assets/6. System & Brand Development.png';
+import LaunchImage from '../assets/7. Automation & Launch.png';
+import ScalingImage from '../assets/8. Optimization & Scaling.png';
 
 const processSteps = [
   {

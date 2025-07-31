@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import HeroImage from '../assets/Hero Section.png';
+import HeroImage from '../assets/1. Hero Section.png';
 import { Link } from 'react-scroll';
 
 const Hero = () => {

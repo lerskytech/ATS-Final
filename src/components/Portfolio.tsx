@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
-import CaseStudy1Image from '../assets/Case Study 1.png';
-import CaseStudy2Image from '../assets/Case Study 2.png';
-import CaseStudy3Image from '../assets/Case Study 3.png';
+import CaseStudy1Image from '../assets/9. Case Study 1.png';
+import CaseStudy2Image from '../assets/10. Case Study 2.png';
+import CaseStudy3Image from '../assets/11. Case Study 3.png';
 
 const portfolioItems = [
   {

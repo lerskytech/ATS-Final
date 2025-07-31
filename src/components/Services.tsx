@@ -6,19 +6,19 @@ import MarketingImage from '../Assets/4. Marketing & Outreach.png';
 const services = [
   {
     title: 'Custom CRM & Automation',
-    description: 'Build powerful systems to automate follow-ups, lead nurturing, and client retention.',
+    description: 'Tired of manual follow-ups and lost leads? We build intelligent automation engines that streamline your sales process, nurture relationships, and ensure no opportunity falls through the cracks.',
     image: CrmImage,
     alt: 'A clean, intuitive CRM dashboard on a laptop screen.',
   },
   {
     title: 'Branding & Digital Presence',
-    description: 'Create a unified brand identity, compelling content, and a conversion-focused website.',
+    description: 'Is your online presence failing to impress? We overhaul your digital footprint, creating a cohesive and powerful brand experience that builds trust and drives action.',
     image: BrandingImage,
     alt: 'A mood board showcasing a cohesive brand identity for a modern business.',
   },
   {
     title: 'Marketing & Outreach',
-    description: 'Automate social media, set appointments, and rank on voice search to connect with more customers.',
+    description: 'Struggling to reach new customers consistently? We implement scalable marketing systems that automate your outreach, fill your pipeline, and position you in front of ready-to-buy clients.',
     image: MarketingImage,
     alt: 'Abstract visualization of automated marketing pathways.',
   },
@@ -41,8 +41,8 @@ const Services = () => {
   return (
     <section id="services" className="py-20 px-4 bg-background">
       <div className="container mx-auto px-4 text-center">
-        <h2 className="text-4xl font-bold mb-4 font-sans text-accent">Our Solutions</h2>
-        <p className="text-lg text-text-secondary mb-12 max-w-3xl mx-auto">We blend technology and creativity to deliver results that help your business grow.</p>
+        <h2 className="text-4xl md:text-5xl font-bold mb-4 font-sans text-text-primary">Automate & Elevate Your Business</h2>
+        <p className="text-lg text-text-secondary mb-12 max-w-3xl mx-auto">We deliver end-to-end digital solutions designed to automate your operations, amplify your brand, and accelerate your growth.</p>
         <motion.div 
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
           variants={containerVariants}

@@ -1,24 +1,27 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
+import Image13 from '../Assets/13.png';
+import Image14 from '../Assets/14.png';
+import Image15 from '../Assets/15.png';
 
 const testimonials = [
-  {
-    name: 'John D.',
-    title: 'CEO, Tech Innovators',
-    quote: 'Alpha Trust Solutions transformed our digital presence. Their expertise in web development and branding is unmatched. Our engagement has skyrocketed!',
-    avatar: 'https://i.pravatar.cc/150?u=a042581f4e29026704d',
-  },
   {
     name: 'Jane S.',
     title: 'Marketing Director, Creative Minds',
     quote: 'Working with the ATS team was a breeze. They are professional, creative, and delivered a stunning website that exceeded all our expectations.',
-    avatar: 'https://i.pravatar.cc/150?u=a042581f4e29026704e',
+    avatar: Image13,
   },
   {
-    name: 'Sam L.',
+    name: 'John D.',
+    title: 'CEO, Tech Innovators',
+    quote: 'Alpha Trust Solutions transformed our digital presence. Their expertise in web development and branding is unmatched. Our engagement has skyrocketed!',
+    avatar: Image14,
+  },
+  {
+    name: 'Robert Miller',
     title: 'Founder, Eco Goods',
     quote: 'Their social media strategies doubled our online reach in just three months. An incredible team that delivers real, measurable results.',
-    avatar: 'https://i.pravatar.cc/150?u=a042581f4e29026704f',
+    avatar: Image15,
   },
 ];
 

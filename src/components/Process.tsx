@@ -7,25 +7,25 @@ import ScalingImage from '../Assets/8. Optimization & Scaling.png';
 const processSteps = [
   {
     title: '1. Discovery & Strategy',
-    description: 'We start by deeply understanding your business, goals, and customers to build a custom roadmap for growth.',
+    description: 'Every successful project starts with a deep dive. We immerse ourselves in your world—your goals, your challenges, your customers—to architect a bespoke growth strategy that serves as the blueprint for everything that follows.',
     image: DiscoveryImage,
     alt: 'Illustration of a magnifying glass over a business blueprint.',
   },
   {
     title: '2. System & Brand Development',
-    description: 'We build your custom CRM, design a compelling brand identity, and create content that converts.',
+    description: 'This is where the vision takes shape. We build your custom automation engine, forge a powerful brand identity, and develop the high-performance digital assets that will become the foundation of your elevated business.',
     image: DevelopmentImage,
     alt: 'Split-screen showing CRM dashboard development and brand design.',
   },
   {
     title: '3. Automation & Launch',
-    description: 'We implement automation for marketing and outreach, then launch your new systems and digital presence.',
+    description: 'With the core systems in place, we deploy intelligent automation across your marketing and sales funnels. We then execute a seamless launch of your new, powerful digital presence, ready to capture and convert.',
     image: LaunchImage,
     alt: 'Illustration of interconnected gears representing automation.',
   },
   {
     title: '4. Optimization & Scaling',
-    description: 'We monitor performance, refine strategies based on data, and provide ongoing support to ensure you continue to scale.',
+    description: 'Your launch is just the beginning. We continuously monitor performance analytics, refine strategies for maximum impact, and provide dedicated support to ensure your business doesn\'t just grow—it scales.',
     image: ScalingImage,
     alt: 'Upward-trending line graph on a digital interface.',
   },
@@ -54,8 +54,8 @@ const Process = () => {
     <section id="process" className="py-20 px-4 bg-surface">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-sans text-text-primary">Our Strategic Process</h2>
-          <p className="text-lg text-text-secondary mt-4 max-w-3xl mx-auto">A proven framework for building the systems and brand you need to scale.</p>
+          <h2 className="text-4xl md:text-5xl font-sans text-text-primary">The Blueprint for Your Success</h2>
+          <p className="text-lg text-text-secondary mt-4 max-w-3xl mx-auto">From initial strategy to continuous scaling, our process is designed for one thing: to deliver measurable results and a powerful return on your investment.</p>
         </div>
         <motion.div 
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12"

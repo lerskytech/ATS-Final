@@ -6,9 +6,10 @@ interface RatioBoxProps {
   ratio: '1:1' | '2:3' | '3:2' | string;
   width?: string;
   className?: string;
+  imageClassName?: string;
 }
 
-const RatioBox: React.FC<RatioBoxProps> = ({ src, alt, ratio, width = '100%', className = '' }) => {
+const RatioBox: React.FC<RatioBoxProps> = ({ src, alt, ratio, width = '100%', className = '', imageClassName = '' }) => {
   const [numerator, denominator] = ratio.includes('/') 
     ? ratio.split('/').map(Number) 
     : ratio.split(':').map(Number);
@@ -22,7 +23,7 @@ const RatioBox: React.FC<RatioBoxProps> = ({ src, alt, ratio, width = '100%', cl
       <img
         src={src}
         alt={alt}
-        className="absolute top-0 left-0 w-full h-full object-cover"
+        className={`absolute top-0 left-0 w-full h-full object-cover ${imageClassName}`}
         loading="lazy"
       />
     </div>

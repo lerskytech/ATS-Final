@@ -1,66 +1,121 @@
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import RatioBox from './RatioBox';
-import { imageMap } from '../utils/imageMap';
+import Particles, { initParticlesEngine } from '@tsparticles/react';
+import { type Container, type Engine, type ISourceOptions } from '@tsparticles/engine';
+import { loadSlim } from '@tsparticles/slim';
 
 const Hero = () => {
-  const tagline = 'Empowering Businesses with Digital Excellence';
-  const heroImageKey = '/assets/banners/hero.webp';
-  const heroImageData = imageMap[heroImageKey as keyof typeof imageMap];
-  if (!heroImageData) return null;
+  const [init, setInit] = useState(false);
 
-  const sentence = {
-    hidden: { opacity: 1 },
-    visible: {
-      opacity: 1,
-      transition: {
-        delay: 0.5,
-        staggerChildren: 0.08,
-      },
-    },
+  useEffect(() => {
+    initParticlesEngine(async (engine: Engine) => {
+      await loadSlim(engine);
+    }).then(() => {
+      setInit(true);
+    });
+  }, []);
+
+  const particlesLoaded = async (container?: Container): Promise<void> => {
+    console.log('Particles container loaded', container);
   };
 
-  const letter = {
-    hidden: { opacity: 0, y: 50 },
-    visible: {
-      opacity: 1,
-      y: 0,
+  const particlesOptions: ISourceOptions = {
+    background: {
+      color: {
+        value: '#000000',
+      },
     },
+    fpsLimit: 120,
+    interactivity: {
+      events: {
+        onHover: {
+          enable: true,
+          mode: 'repulse',
+        },
+      },
+      modes: {
+        repulse: {
+          distance: 100,
+          duration: 0.4,
+        },
+      },
+    },
+    particles: {
+      color: {
+        value: '#00ffff',
+      },
+      links: {
+        color: '#00ffff',
+        distance: 150,
+        enable: true,
+        opacity: 0.2,
+        width: 1,
+      },
+      collisions: {
+        enable: true,
+      },
+      move: {
+        direction: 'none',
+        enable: true,
+        outModes: {
+          default: 'bounce',
+        },
+        random: false,
+        speed: 1,
+        straight: false,
+      },
+      number: {
+        density: {
+          enable: true,
+        },
+        value: 80,
+      },
+      opacity: {
+        value: 0.2,
+      },
+      shape: {
+        type: 'circle',
+      },
+      size: {
+        value: { min: 1, max: 5 },
+      },
+    },
+    detectRetina: true,
   };
 
   return (
-    <section className="relative h-screen flex items-center justify-center text-center">
-      <div className="absolute inset-0 w-full h-full">
-        <RatioBox
-          src={heroImageKey}
-          alt={heroImageData.useCase}
-          ratio={heroImageData.ratio}
-          className="w-full h-full"
-        />
-      </div>
-      <div className="absolute inset-0 bg-black bg-opacity-50" />
-      <div className="relative z-10 p-8 bg-black bg-opacity-30 backdrop-blur-lg rounded-xl border border-cyan-400/50 shadow-lg shadow-cyan-500/20">
-        <motion.h1
-          className="text-4xl md:text-6xl font-bold text-white mb-6 tracking-wider"
-          variants={sentence}
-          initial="hidden"
-          animate="visible"
+    <section id="hero" className="relative h-screen flex items-center justify-center text-center overflow-hidden">
+      {init && <Particles id="tsparticles" options={particlesOptions} loaded={particlesLoaded} />}
+      <div className="relative z-10 p-4">
+        <motion.div
+          initial={{ opacity: 0, y: -50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, ease: 'easeOut' }}
         >
-          {tagline.split('').map((char, index) => (
-            <motion.span key={char + '-' + index} variants={letter}>
-              {char}
-            </motion.span>
-          ))}
-        </motion.h1>
-        <motion.button
-          className="px-8 py-3 bg-cyan-500 text-black font-bold rounded-full shadow-lg shadow-cyan-500/50 transform transition-transform duration-300 hover:scale-105"
-          whileHover={{ scale: 1.1, textShadow: '0px 0px 8px rgb(255,255,255)', boxShadow: '0px 0px 8px rgb(0,255,255)' }}
-          animate={{
-            scale: [1, 1.05, 1],
-            transition: { duration: 2, repeat: Infinity, ease: 'easeInOut' },
-          }}
+          <h1 
+            className="text-5xl md:text-7xl font-bold text-white uppercase glitch"
+            data-text="Digital Excellence"
+          >
+            Digital Excellence
+          </h1>
+          <motion.p 
+            className="text-lg md:text-2xl text-cyan-300 mt-4 max-w-3xl mx-auto"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 0.5 }}
+          >
+            We don't just build websites. We architect digital futures.
+          </motion.p>
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, scale: 0.5 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5, delay: 1 }}
         >
-          Discover Our Solutions
-        </motion.button>
+          <button className="mt-8 px-8 py-4 bg-cyan-500 text-black font-bold text-lg rounded-full transition-transform duration-300 hover:scale-110 pulse-glow">
+            Discover Your Future
+          </button>
+        </motion.div>
       </div>
     </section>
   );

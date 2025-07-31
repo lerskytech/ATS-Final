@@ -2,6 +2,100 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Ken Burns Effect */
+@keyframes kenburns {
+  0% {
+    transform: scale(1) translate(0, 0);
+    transform-origin: 50% 50%;
+  }
+  100% {
+    transform: scale(1.15) translate(-5%, 5%);
+    transform-origin: 50% 50%;
+  }
+}
+
+.animate-kenburns {
+  animation: kenburns 20s ease-out alternate-reverse infinite;
+}
+
 body {
   @apply bg-black text-white;
+}
+
+/* --- Process Data Flow --- */
+.process-flow-line {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background-color: rgba(0, 255, 255, 0.2);
+  transform: translateX(-50%);
+}
+
+.data-packet {
+  position: absolute;
+  left: 50%;
+  width: 12px;
+  height: 12px;
+  background-color: #00ffff;
+  border-radius: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff;
+  animation: flow 4s linear infinite;
+}
+
+@keyframes flow {
+  from {
+    top: -20px;
+  }
+  to {
+    top: 100%;
+  }
+}
+
+.portfolio-card {
+  @apply bg-gray-900/50 rounded-lg overflow-hidden border border-cyan-700/50 transition-all duration-300;
+  position: relative;
+}
+
+.portfolio-card:hover {
+  @apply border-cyan-400;
+  box-shadow: 0 0 25px rgba(0, 255, 255, 0.4);
+}
+
+.portfolio-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: inherit;
+  border: 1px solid transparent;
+  background: linear-gradient(120deg, transparent, rgba(0, 255, 255, 0.2), transparent) border-box;
+  -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: destination-out;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.portfolio-card:hover::before {
+  opacity: 1;
+}
+
+.futuristic-form {
+  @apply bg-gray-900/50 backdrop-blur-sm p-8 rounded-lg border border-cyan-600/30;
+}
+
+.futuristic-input {
+  @apply w-full bg-gray-800/60 border-2 border-gray-700 rounded-md py-3 pl-12 pr-4 text-white;
+  @apply focus:outline-none focus:border-cyan-400 focus:ring-2 focus:ring-cyan-500/50 transition-all duration-300;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.4);
+}
+
+.futuristic-input::placeholder {
+  @apply text-gray-500;
 }

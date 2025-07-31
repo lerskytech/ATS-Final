@@ -66,7 +66,7 @@ const Services = () => {
             return (
               <motion.div
                 key={service.title}
-                className="bg-gray-900/50 backdrop-blur-md p-8 rounded-lg border border-cyan-400/30 text-left transform transition-transform duration-300 hover:scale-105 hover:border-cyan-400"
+                className="bg-gray-900/50 backdrop-blur-md p-8 rounded-lg border border-cyan-400/30 text-left transform transition-all duration-500 hover:scale-105 hover:-translate-y-2 hover:shadow-lg hover:shadow-cyan-500/30 hover:border-cyan-400"
                 variants={itemVariants}
               >
                 <div className="w-full mb-6">

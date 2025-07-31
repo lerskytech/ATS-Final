@@ -27,7 +27,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-black/80 backdrop-blur-lg shadow-lg shadow-cyan-500/10' : 'bg-transparent'}`}>
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled ? 'bg-black/80 backdrop-blur-lg border-b border-cyan-400/20 shadow-lg shadow-cyan-500/10' : 'bg-transparent'}`}>
       <div className="max-w-6xl mx-auto px-4">
         <div className="flex justify-between items-center h-20">
           <Link to="hero" smooth={true} duration={500} className="cursor-pointer w-12 h-12">

@@ -1,83 +1,119 @@
 import { useState } from 'react';
-import { motion, useMotionValue, useTransform } from 'framer-motion';
-import RatioBox from './RatioBox';
-import { imageMap } from '../utils/imageMap';
+import { motion, AnimatePresence } from 'framer-motion';
 
 interface PortfolioItem {
   title: string;
   description: string;
-  before: string;
-  after: string;
+  longDescription: string;
+  image: string;
+  tags: string[];
 }
 
-const portfolio: PortfolioItem[] = [
+const portfolioItems: PortfolioItem[] = [
   {
-    title: 'E-commerce Platform Overhaul',
-    description: 'A complete redesign and rebuild of a major e-commerce platform, resulting in a 40% increase in conversions and a 60% improvement in page load times.',
-    before: '/assets/projects/project1_before.webp',
-    after: '/assets/projects/project1_after.webp',
+    title: 'Project Terminus',
+    description: 'AI-driven logistics platform.',
+    longDescription: 'A complete overhaul of a legacy logistics system, introducing an AI-powered prediction engine that reduced routing costs by 30% and improved delivery times by 15%. The UI was redesigned for a modern, intuitive user experience.',
+    image: '/assets/projects/project1_after.webp',
+    tags: ['AI/ML', 'React', 'Node.js', 'Cloud']
   },
   {
-    title: 'Corporate Rebranding',
-    description: 'A comprehensive rebranding project for a Fortune 500 company, including a new logo, brand guidelines, and a stunning new website.',
-    before: '/assets/projects/project2_before.webp',
-    after: '/assets/projects/project2_after.webp',
+    title: 'Project Cygnus',
+    description: 'Next-gen e-commerce experience.',
+    longDescription: 'A futuristic e-commerce platform built with a headless architecture, featuring AR product previews and a personalized shopping assistant. The project resulted in a 50% increase in user engagement and a 25% conversion uplift.',
+    image: '/assets/projects/project2_after.webp',
+    tags: ['E-commerce', 'AR', 'Next.js', 'GraphQL']
+  },
+  {
+    title: 'Project Nova',
+    description: 'Decentralized finance application.',
+    longDescription: 'A secure DeFi application for staking and yield farming, built on Ethereum. The platform features a custom wallet, real-time analytics, and a governance token system, handling over $10M in TVL post-launch.',
+    image: '/assets/projects/project3_after.webp',
+    tags: ['DeFi', 'Blockchain', 'Solidity', 'Web3']
   },
 ];
 
 const Portfolio = () => {
-  const [selectedItem, setSelectedItem] = useState<PortfolioItem>(portfolio[0]);
+  const [selectedId, setSelectedId] = useState<string | null>(null);
 
-  const x = useMotionValue(250);
-  const width = 500; // a fixed width for the container
-  const clipPath = useTransform(x, [0, width], [`inset(0 ${width}px 0 0)`, `inset(0 0 0 0)`]);
+  const selectedItem = portfolioItems.find(item => item.title === selectedId);
 
   return (
-    <section id="portfolio" className="py-20 px-4 bg-black">
-      <div className="max-w-6xl mx-auto text-center">
-        <h2 className="text-4xl font-bold mb-4 text-white">Our Work</h2>
-        <p className="text-lg text-gray-400 mb-12">A glimpse into the transformations we've delivered.</p>
-        
-        <div className="mb-12">
-          <h3 className="text-3xl font-bold text-cyan-400 mb-2">{selectedItem.title}</h3>
-          <p className="text-gray-300 max-w-2xl mx-auto">{selectedItem.description}</p>
+    <section id="portfolio" className="py-24 bg-black">
+      <div className="container mx-auto px-4 text-center">
+        <motion.h2 
+          className="text-4xl font-bold text-center mb-4 text-cyan-300 uppercase tracking-widest"
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+        >
+          Case Files
+        </motion.h2>
+        <motion.div 
+          className="w-24 h-1 bg-cyan-400 mx-auto mb-12"
+          initial={{ scaleX: 0 }}
+          whileInView={{ scaleX: 1 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          viewport={{ once: true }}
+        />
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {portfolioItems.map(item => (
+            <motion.div
+              key={item.title}
+              layoutId={item.title}
+              onClick={() => setSelectedId(item.title)}
+              className="portfolio-card cursor-pointer"
+              whileHover={{ y: -10, scale: 1.05 }}
+              transition={{ duration: 0.3 }}
+            >
+              <div className="h-48 bg-cover bg-center rounded-t-lg" style={{ backgroundImage: `url(${item.image})` }}></div>
+              <div className="p-6">
+                <h3 className="text-xl font-bold text-cyan-400 mb-2">{item.title}</h3>
+                <p className="text-gray-400 mb-4">{item.description}</p>
+                <div className="flex flex-wrap gap-2">
+                  {item.tags.map(tag => (
+                    <span key={tag} className="px-2 py-1 bg-cyan-900/50 text-cyan-300 text-xs rounded-full">{tag}</span>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          ))}
         </div>
 
-        <div className="relative w-full max-w-2xl mx-auto aspect-[2/3] rounded-lg overflow-hidden border-2 border-cyan-400/50 shadow-lg shadow-cyan-500/20">
-          <motion.div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${selectedItem.before})` }} />
-          <motion.div 
-            className="absolute inset-0 bg-cover bg-center"
-            style={{ backgroundImage: `url(${selectedItem.after})`, clipPath: clipPath }}
-          />
-          <motion.div
-            className="absolute top-0 bottom-0 w-1 bg-cyan-400 cursor-ew-resize"
-            style={{ x }}
-            drag="x"
-            dragConstraints={{ left: 0, right: width }}
-            dragElastic={0.1}
-            dragMomentum={false}
-          >
-            <div className="absolute top-1/2 -translate-y-1/2 -left-4 w-8 h-8 bg-cyan-400 rounded-full border-2 border-black flex items-center justify-center">
-              <svg className="w-4 h-4 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 9l4-4 4 4m0 6l-4 4-4-4"></path></svg>
-            </div>
-          </motion.div>
-        </div>
-
-        <div className="flex justify-center gap-4 mt-8">
-          {portfolio.map((item) => {
-            const imageData = imageMap[item.after as keyof typeof imageMap];
-            if (!imageData) return null;
-            return (
-              <button 
-                key={item.title}
-                onClick={() => setSelectedItem(item)}
-                className={`w-24 h-24 rounded-lg overflow-hidden border-2 transition-all duration-300 ${selectedItem.title === item.title ? 'border-cyan-400 scale-110' : 'border-gray-600 hover:border-cyan-400'}`}
+        <AnimatePresence>
+          {selectedId && selectedItem && (
+            <motion.div 
+              className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 p-4"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+            >
+              <motion.div 
+                className="bg-gray-900 rounded-lg w-full max-w-3xl overflow-hidden border border-cyan-500 shadow-2xl shadow-cyan-500/20"
+                layoutId={selectedId}
               >
-                <RatioBox src={item.after} alt={imageData.useCase} ratio={imageData.ratio} />
-              </button>
-            )
-          })}
-        </div>
+                <div className="h-64 bg-cover bg-center" style={{ backgroundImage: `url(${selectedItem.image})` }}></div>
+                <div className="p-8">
+                  <motion.h2 className="text-3xl font-bold text-cyan-300 mb-4">{selectedItem.title}</motion.h2>
+                  <motion.p className="text-gray-300 mb-6">{selectedItem.longDescription}</motion.p>
+                  <div className="flex flex-wrap gap-2 mb-6">
+                    {selectedItem.tags.map(tag => (
+                      <span key={tag} className="px-3 py-1 bg-cyan-800/70 text-cyan-200 text-sm rounded-full">{tag}</span>
+                    ))}
+                  </div>
+                  <motion.button 
+                    onClick={() => setSelectedId(null)} 
+                    className="px-6 py-2 bg-cyan-500 text-black font-bold rounded-full hover:bg-cyan-400 transition-colors"
+                  >
+                    Close
+                  </motion.button>
+                </div>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </section>
   );

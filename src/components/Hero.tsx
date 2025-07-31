@@ -15,10 +15,6 @@ const Hero = () => {
     });
   }, []);
 
-  const particlesLoaded = async (container?: Container): Promise<void> => {
-    console.log('Particles container loaded', container);
-  };
-
   const particlesOptions: ISourceOptions = {
     background: {
       color: {
@@ -85,7 +81,7 @@ const Hero = () => {
 
   return (
     <section id="hero" className="relative h-screen flex items-center justify-center text-center overflow-hidden">
-      {init && <Particles id="tsparticles" options={particlesOptions} loaded={particlesLoaded} />}
+      {init && <Particles id="tsparticles" options={particlesOptions}  />}
       <div className="relative z-10 p-4">
         <motion.div
           initial={{ opacity: 0, y: -50 }}

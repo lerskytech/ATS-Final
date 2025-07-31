@@ -140,3 +140,7 @@ vite.config.ts.timestamp-*
 
 # Local Netlify folder
 .netlify
+
+# System Files
+.DS_Store
+

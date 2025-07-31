@@ -6,6 +6,7 @@ const Hero = () => {
   const tagline = 'Empowering Businesses with Digital Excellence';
   const heroImageKey = '/assets/banners/hero.webp';
   const heroImageData = imageMap[heroImageKey as keyof typeof imageMap];
+  if (!heroImageData) return null;
 
   const sentence = {
     hidden: { opacity: 1 },

@@ -38,6 +38,7 @@ const Process = () => {
           >
             {steps.map((step, index) => {
               const imageData = imageMap[step.image as keyof typeof imageMap];
+              if (!imageData) return null;
               return (
                 <motion.div 
                   key={index}

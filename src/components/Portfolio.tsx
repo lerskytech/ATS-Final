@@ -66,6 +66,7 @@ const Portfolio = () => {
         <div className="flex justify-center gap-4 mt-8">
           {portfolio.map((item) => {
             const imageData = imageMap[item.after as keyof typeof imageMap];
+            if (!imageData) return null;
             return (
               <button 
                 key={item.title}

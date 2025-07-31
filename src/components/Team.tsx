@@ -56,6 +56,7 @@ const Team = () => {
         >
           {team.map((member, index) => {
             const imageData = imageMap[member.avatar as keyof typeof imageMap];
+            if (!imageData) return null;
             return (
               <motion.div 
                 key={index}

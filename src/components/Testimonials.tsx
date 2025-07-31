@@ -1,27 +1,26 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaStar } from 'react-icons/fa';
-import RatioBox from './RatioBox';
 import { imageMap } from '../utils/imageMap';
+import RatioBox from './RatioBox';
 
 const testimonials = [
   {
-    quote: 'Alpha Trust Solutions transformed our digital presence. Their strategic approach is unparalleled. We saw a 200% increase in engagement.',
-    author: 'Jane Doe',
-    role: 'CEO, Innovate Inc.',
-    avatar: '/assets/avatars/client1.webp',
+    name: 'John D.',
+    title: 'CEO, Tech Innovators',
+    quote: 'Alpha Trust Solutions transformed our digital presence. Their expertise in web development and branding is unmatched. Our engagement has skyrocketed!',
+    avatar: '/assets/avatars/client1.png',
   },
   {
-    quote: 'The team at ATS is brilliant. They delivered a visually stunning and high-performance website that has become the cornerstone of our marketing efforts.',
-    author: 'John Smith',
-    role: 'Marketing Director, TechCorp',
-    avatar: '/assets/avatars/client2.webp',
+    name: 'Jane S.',
+    title: 'Marketing Director, Creative Minds',
+    quote: 'Working with the ATS team was a breeze. They are professional, creative, and delivered a stunning website that exceeded all our expectations.',
+    avatar: '/assets/avatars/client2.png',
   },
   {
-    quote: 'A seamless experience from start to finish. Their attention to detail and commitment to quality is evident in the final product. Truly exceptional work.',
-    author: 'Emily White',
-    role: 'Founder, Creative Solutions',
-    avatar: '/assets/avatars/client3.webp',
+    name: 'Sam L.',
+    title: 'Founder, Eco Goods',
+    quote: 'Their social media strategies doubled our online reach in just three months. An incredible team that delivers real, measurable results.',
+    avatar: '/assets/avatars/client3.png',
   },
 ];
 
@@ -31,38 +30,43 @@ const Testimonials = () => {
   useEffect(() => {
     const timer = setInterval(() => {
       setIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
-    }, 5000);
+    }, 7000);
     return () => clearInterval(timer);
   }, []);
 
+  const currentTestimonial = testimonials[index];
+  const imageData = imageMap[currentTestimonial.avatar as keyof typeof imageMap];
+
+  if (!imageData) {
+    console.error(`Image data not found for avatar: ${currentTestimonial.avatar}`);
+    return null;
+  }
+
   return (
-    <section id="testimonials" className="py-20 px-4 bg-gray-900/20">
-      <div className="max-w-4xl mx-auto text-center">
-        <h2 className="text-4xl font-bold mb-12 text-white">What Our Clients Say</h2>
-        <div className="relative h-64">
+    <section id="testimonials" className="py-20 bg-black text-white">
+      <div className="container mx-auto px-4 text-center">
+        <h2 className="text-4xl font-bold mb-12">What Our Clients Say</h2>
+        <div className="relative h-80">
           <AnimatePresence mode="wait">
             <motion.div
               key={index}
-              className="absolute inset-0 flex flex-col items-center justify-center p-8 bg-black/30 backdrop-blur-lg rounded-xl border border-cyan-400/30"
+              className="absolute inset-0 flex flex-col items-center justify-center"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.5 }}
             >
-              <div className="w-20 h-20 mb-4">
+              <div className="w-24 h-24 mb-6">
                 <RatioBox
-                  src={testimonials[index].avatar}
-                  alt={imageMap[testimonials[index].avatar as keyof typeof imageMap].useCase}
-                  ratio={imageMap[testimonials[index].avatar as keyof typeof imageMap].ratio}
-                  className="rounded-full border-2 border-cyan-400"
+                  src={currentTestimonial.avatar}
+                  alt={imageData.useCase}
+                  ratio={imageData.ratio}
+                  className="rounded-full border-4 border-cyan-400 object-cover"
                 />
               </div>
-              <p className="text-xl italic text-gray-300 mb-4">"{testimonials[index].quote}"</p>
-              <h3 className="font-bold text-cyan-400">{testimonials[index].author}</h3>
-              <p className="text-sm text-gray-500">{testimonials[index].role}</p>
-              <div className="flex text-yellow-400 mt-2">
-                {[...Array(5)].map((_, i) => <FaStar key={i} />)}
-              </div>
+              <p className="text-xl italic max-w-3xl mx-auto mb-4">\"{currentTestimonial.quote}\"</p>
+              <h3 className="text-lg font-bold text-cyan-400">{currentTestimonial.name}</h3>
+              <p className="text-gray-400">{currentTestimonial.title}</p>
             </motion.div>
           </AnimatePresence>
         </div>

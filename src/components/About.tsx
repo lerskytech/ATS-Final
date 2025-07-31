@@ -14,6 +14,7 @@ const About: React.FC = () => {
 
   const aboutImageKey = '/assets/portraits/about.webp';
   const aboutImageData = imageMap[aboutImageKey as keyof typeof imageMap];
+  if (!aboutImageData) return null;
 
   return (
     <section id="about" className="py-20 px-4 bg-gray-900/20">
@@ -37,6 +38,7 @@ const About: React.FC = () => {
             <ul className="space-y-4">
               {services.map((service) => {
                 const serviceIconData = imageMap[service.icon as keyof typeof imageMap];
+                if (!serviceIconData) return null;
                 return (
                   <li key={service.name} className="flex items-center">
                      <div className="w-8 h-8 mr-4 flex-shrink-0">

@@ -3,7 +3,7 @@ import HeroImage from '../Assets/1. Hero Section.png';
 import { Link } from 'react-scroll';
 
 const Hero = () => {
-  const headline = "Scale Your Business, Automatically.";
+  const headline = "Automate & Elevate Your Brand.";
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -53,7 +53,7 @@ const Hero = () => {
           className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto mb-10"
           variants={itemVariants}
         >
-          Custom CRM systems, branding, and digital strategy for service-based businesses.
+          Bespoke CRM systems, iconic branding, and intelligent digital strategy for ambitious service-based businesses.
         </motion.p>
         
         <motion.div

@@ -64,7 +64,7 @@ const Testimonials = () => {
                   className="rounded-full border-4 border-cyan-400 object-cover"
                 />
               </div>
-              <p className="text-xl italic max-w-3xl mx-auto mb-4">\"{currentTestimonial.quote}\"</p>
+              <p className="text-xl italic max-w-3xl mx-auto mb-4">"{currentTestimonial.quote}"</p>
               <h3 className="text-lg font-bold text-cyan-400">{currentTestimonial.name}</h3>
               <p className="text-gray-400">{currentTestimonial.title}</p>
             </motion.div>

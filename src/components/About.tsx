@@ -1,56 +1,40 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import RatioBox from './RatioBox';
-import { imageMap } from '../utils/imageMap';
 
 const About: React.FC = () => {
-  const services = [
-    { name: 'Custom CRM Development', icon: '/assets/icons/crm.webp' },
-    { name: 'Branding & Content Creation', icon: '/assets/icons/branding.webp' },
-    { name: 'Social Media Marketing & Automation', icon: '/assets/icons/social.webp' },
-    { name: 'Voice Search SEO', icon: '/assets/icons/seo.webp' },
-    { name: 'Website Design & Optimization', icon: '/assets/icons/website.webp' },
-  ];
-
-  const aboutImageKey = '/assets/portraits/about.webp';
-  const aboutImageData = imageMap[aboutImageKey as keyof typeof imageMap];
-  if (!aboutImageData) return null;
+  const variants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+  };
 
   return (
-    <section id="about" className="py-20 px-4 bg-gray-900/20">
-      <div className="max-w-6xl mx-auto text-center">
-        <h2 className="text-4xl font-bold mb-4 text-white">About Alpha Trust</h2>
-        <p className="text-lg text-gray-400 mb-12 max-w-3xl mx-auto">
-          We are a team of passionate developers, designers, and strategists dedicated to building the future of the web. Our focus is on creating beautiful, functional, and high-performance digital experiences that drive results.
-        </p>
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-8 items-center mb-12">
-          <div className="md:col-span-2">
-            <RatioBox
-              src={aboutImageKey}
-              alt={aboutImageData.useCase}
-              ratio={aboutImageData.ratio}
-              className="rounded-lg shadow-lg border-2 border-cyan-400/50"
-            />
-          </div>
-          <div className="md:col-span-3 text-left">
-            <h3 className="text-3xl font-bold mb-4 text-cyan-400">Our Core Services</h3>
-            <p className="text-gray-300 mb-6">We offer a comprehensive suite of services to elevate your brand's digital presence from start to finish.</p>
-            <ul className="space-y-4">
-              {services.map((service) => {
-                const serviceIconData = imageMap[service.icon as keyof typeof imageMap];
-                if (!serviceIconData) return null;
-                return (
-                  <li key={service.name} className="flex items-center">
-                     <div className="w-8 h-8 mr-4 flex-shrink-0">
-                       <RatioBox src={service.icon} alt={serviceIconData.useCase} ratio={serviceIconData.ratio} />
-                     </div>
-                    <span className="text-lg text-gray-200">{service.name}</span>
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
-        </div>
+    <section id="about" className="py-20 px-4 bg-gray-800 text-white">
+      <div className="max-w-4xl mx-auto text-center">
+        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={variants}>
+          <h2 className="text-4xl font-bold mb-6">
+            Why Alpha Trust Solutions?
+          </h2>
+          <p className="text-lg text-gray-300 mb-10">
+            Tired of chasing leads and wrestling with scattered online profiles? We streamline your digital world so your business appears everywhere it matters—on Google, Siri, Alexa, Bing, and future search tools your customers use (even if you haven’t heard of them yet).
+          </p>
+        </motion.div>
+        
+        <motion.div 
+          className="bg-gray-900 p-8 rounded-lg shadow-lg border border-cyan-400/30"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.5 }}
+          variants={{ ...variants, visible: { ...variants.visible, transition: { ...variants.visible.transition, delay: 0.3 }}}}
+        >
+          <h3 className="text-2xl font-bold text-cyan-400 mb-4">
+            Our Promise
+          </h3>
+          <p className="text-lg text-gray-200">
+            You focus on what you do best.
+            <br />
+            We handle the tech, the automation, and the brand presence—so you never miss an opportunity.
+          </p>
+        </motion.div>
       </div>
     </section>
   );

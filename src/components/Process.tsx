@@ -1,33 +1,21 @@
 import { motion } from 'framer-motion';
-import DiscoveryImage from '../Assets/5. Discovery & Strategy.png';
-import DevelopmentImage from '../Assets/6. System & Brand Development.png';
-import LaunchImage from '../Assets/7. Automation & Launch.png';
-import ScalingImage from '../Assets/8. Optimization & Scaling.png';
 
 const processSteps = [
   {
-    title: '1. Discovery & Strategy',
-    description: 'Every successful project starts with a deep dive. We immerse ourselves in your world—your goals, your challenges, your customers—to architect a bespoke growth strategy that serves as the blueprint for everything that follows.',
-    image: DiscoveryImage,
-    alt: 'Illustration of a magnifying glass over a business blueprint.',
+    title: 'Discovery & Planning',
+    description: 'We learn about your business, goals, and challenges—then map a step-by-step strategy for growth.',
   },
   {
-    title: '2. System & Brand Development',
-    description: 'This is where the vision takes shape. We build your custom automation engine, forge a powerful brand identity, and develop the high-performance digital assets that will become the foundation of your elevated business.',
-    image: DevelopmentImage,
-    alt: 'Split-screen showing CRM dashboard development and brand design.',
+    title: 'Build & Design',
+    description: 'Our team builds your CRM, updates your brand, and unifies your business info everywhere it matters.',
   },
   {
-    title: '3. Automation & Launch',
-    description: 'With the core systems in place, we deploy intelligent automation across your marketing and sales funnels. We then execute a seamless launch of your new, powerful digital presence, ready to capture and convert.',
-    image: LaunchImage,
-    alt: 'Illustration of interconnected gears representing automation.',
+    title: 'Launch & Automate',
+    description: 'We set your systems live and automate your outreach, so leads come to you.',
   },
   {
-    title: '4. Optimization & Scaling',
-    description: 'Your launch is just the beginning. We continuously monitor performance analytics, refine strategies for maximum impact, and provide dedicated support to ensure your business doesn\'t just grow—it scales.',
-    image: ScalingImage,
-    alt: 'Upward-trending line graph on a digital interface.',
+    title: 'Optimize & Scale',
+    description: 'As you grow, we provide ongoing support and data-driven tweaks for even better results.',
   },
 ];
 
@@ -51,27 +39,27 @@ const Process = () => {
   };
 
   return (
-    <section id="process" className="py-20 px-4 bg-surface">
+    <section id="process" className="py-20 px-4 bg-gray-800 text-white">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-sans text-text-primary">The Blueprint for Your Success</h2>
-          <p className="text-lg text-text-secondary mt-4 max-w-3xl mx-auto">From initial strategy to continuous scaling, our process is designed for one thing: to deliver measurable results and a powerful return on your investment.</p>
+          <h2 className="text-4xl md:text-5xl font-bold">Our Proven Process</h2>
         </div>
         <motion.div 
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
         >
           {processSteps.map((step, index) => (
-            <motion.div key={index} className="text-left flex flex-col" variants={itemVariants}>
-              <div className="w-full h-40 mb-6 rounded-lg overflow-hidden">
-                <img src={step.image} alt={step.alt} className="w-full h-full object-cover" />
-              </div>
-
-              <h4 className="text-2xl font-bold font-sans text-text-primary mb-3">{step.title}</h4>
-              <p className="text-text-secondary leading-relaxed">{step.description}</p>
+            <motion.div 
+              key={index} 
+              className="bg-gray-900 p-6 rounded-lg border border-cyan-400/30 text-center flex flex-col items-center"
+              variants={itemVariants}
+            >
+              <div className="text-3xl font-bold text-cyan-400 mb-4">{`0${index + 1}`}</div>
+              <h3 className="text-2xl font-bold mb-3">{step.title}</h3>
+              <p className="text-gray-300 leading-relaxed">{step.description}</p>
             </motion.div>
           ))}
         </motion.div>

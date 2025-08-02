@@ -8,8 +8,8 @@ const Hero = () => {
       className="relative w-full h-screen mx-auto flex items-center justify-center text-white bg-cover bg-center"
       style={{ backgroundImage: `url(${HeroImage})` }}
     >
-      <div className="absolute inset-0 bg-gray-900 opacity-75"></div>
-      <div className="relative z-10 text-center px-4">
+      {/* This container wraps the text and provides the transparent background */}
+      <div className="relative z-10 text-center bg-black bg-opacity-60 p-10 rounded-xl max-w-4xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
